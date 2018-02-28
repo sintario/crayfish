@@ -5,10 +5,10 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.util.*
 
-class TestApiClient {
-    fun fetch(caseName: String): Flowable<CaseEntity> = Flowable.fromCallable { RandomCaseFactory.generateCase(caseName) }
+class TestApiClient: ApiClient {
+    override fun fetch(caseName: String): Flowable<CaseEntity> = Flowable.fromCallable { RandomCaseFactory.generateCase(caseName) }
 
-    fun fetchAll(caseNames: List<String>): Flowable<List<CaseEntity>> = Flowable.fromCallable {
+    override fun fetchAll(caseNames: List<String>): Flowable<List<CaseEntity>> = Flowable.fromCallable {
         caseNames.map(RandomCaseFactory::generateCase)
     }
 
