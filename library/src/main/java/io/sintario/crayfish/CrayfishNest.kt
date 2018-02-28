@@ -8,7 +8,7 @@ import io.sintario.crayfish.model.CaseModule
 
 
 class CrayfishNest(context: Context, configure: (Builder) -> Unit = {}) {
-    var realmConfiguration: RealmConfiguration
+    private val realmConfiguration: RealmConfiguration
 
     init {
         Realm.init(context)
