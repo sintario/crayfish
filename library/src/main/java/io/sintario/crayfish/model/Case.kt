@@ -1,5 +1,6 @@
 package io.sintario.crayfish.model
 
+import io.realm.Realm
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 
@@ -9,6 +10,9 @@ open class Case(
         var metadata: String? = null
 ) : RealmObject() {
     companion object {
-        const val DEFAULT_VARIANT = -1
+        private const val DEFAULT_VARIANT = -1
+
+        @JvmStatic
+        fun find(realm: Realm, caseName: String): Case? = realm.where(Case::class.java).equalTo("name", caseName).findFirst()
     }
 }
