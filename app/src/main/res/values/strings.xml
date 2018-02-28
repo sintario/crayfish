@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Crayfish Sample</string>
+
+    <string name="case1">けーす１</string>
+    <string name="case2">ケース２</string>
+    <string name="case3">場合３</string>
+    <string name="case4">よん</string>
 </resources>
