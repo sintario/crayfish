@@ -62,12 +62,20 @@ class CrayfishNest(context: Context, configure: (Builder) -> Unit = {}) {
     }
 
     fun retrieve(caseName: String, receiver: (Case?) -> Unit) {
-        realm.use {
-            val case = Case.find(it, caseName)
-            receiver(case)
+        realm.use { instantRealm ->
+            val managedCase = Case.find(instantRealm, caseName)
+            val unmanagedCase = managedCase?.let { instantRealm.copyFromRealm(managedCase) }
+            receiver(unmanagedCase)
         }
     }
 
+    fun retrieve(caseNames: List<String>, receiver: (List<Case>) -> Unit) {
+        realm.use { instantRealm ->
+            val managedCases = Case.findAll(instantRealm, caseNames)
+            val unmanagedCases = instantRealm.copyFromRealm(managedCases)
+            receiver(unmanagedCases)
+        }
+    }
 
     private fun transactionSync(transaction: (Realm) -> Unit) {
         realm.use { it.executeTransaction(transaction) }
