@@ -21,7 +21,7 @@ open class Case(
         }
 
     companion object {
-        private const val DEFAULT_VARIANT = -1
+        const val DEFAULT_VARIANT = -1
 
         private const val PK_NAME = "name"
 
