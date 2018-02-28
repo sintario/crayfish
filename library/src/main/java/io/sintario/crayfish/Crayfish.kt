@@ -4,23 +4,23 @@ import android.content.Context
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import io.sintario.crayfish.model.CaseModule
+import io.sintario.crayfish.storage.CaseStorage
 
 object Crayfish {
     private const val DB_NAME = "io.sintario.crayfish"
 
     /**
-     * Call this in [android.app.Application.onCreate] to initialize
+     * Call this in [android.app.Application.onCreate] to spawnStorage
      */
-    fun initialize(context: Context) {
+    fun spawnStorage(context: Context): CaseStorage {
         Realm.init(context)
-        configureRealm()
+        val configuration = configureRealm()
+        return CaseStorage(configuration)
     }
 
-    private fun configureRealm() {
-        RealmConfiguration.Builder().apply {
-            name(DB_NAME)
-            modules(CaseModule())
-            deleteRealmIfMigrationNeeded()
-        }.build()
-    }
+    private fun configureRealm(): RealmConfiguration = RealmConfiguration.Builder().apply {
+        name(DB_NAME)
+        modules(CaseModule())
+        deleteRealmIfMigrationNeeded()
+    }.build()
 }
