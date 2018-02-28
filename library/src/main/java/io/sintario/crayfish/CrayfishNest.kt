@@ -31,7 +31,7 @@ class CrayfishNest(context: Context, configure: (Builder) -> Unit = {}) {
         var schemaVersion: Long = SCHEMA_VERSION
     }
 
-    val realm: Realm
+    private val realm: Realm
         get() = Realm.getInstance(realmConfiguration)
 
     fun updateOrInsert(case: Case, synchronously: Boolean = true) {
