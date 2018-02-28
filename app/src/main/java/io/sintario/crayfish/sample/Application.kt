@@ -1,14 +1,14 @@
 package io.sintario.crayfish.sample
 
 import io.sintario.crayfish.Crayfish
-import io.sintario.crayfish.storage.CaseStorage
+import io.sintario.crayfish.CrayfishNest
 import android.app.Application as AndroidApplication
 
 class Application: AndroidApplication() {
-    private lateinit var caseStorage: CaseStorage
+    private lateinit var crayfishNest: CrayfishNest
 
     override fun onCreate() {
         super.onCreate()
-        caseStorage = Crayfish.spawnStorage(this)
+        crayfishNest = Crayfish.startNesting(this)
     }
 }
