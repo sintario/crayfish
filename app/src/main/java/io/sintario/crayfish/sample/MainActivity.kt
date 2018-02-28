@@ -13,6 +13,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun reloadTest() {
-        TODO()
+        // TODO: update
     }
 }
