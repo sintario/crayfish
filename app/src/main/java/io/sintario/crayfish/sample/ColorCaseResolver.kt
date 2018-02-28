@@ -1,12 +1,11 @@
 package io.sintario.crayfish.sample
 
-import android.support.annotation.ColorInt
 import android.support.annotation.ColorRes
 import io.sintario.crayfish.Crayfish
 
 object ColorCaseResolver {
     fun resolve(answer: (Color) -> Unit) {
-        Crayfish.nest.retrieve(SampleCase.Color.caseName) {
+        Crayfish.nest.retrieve(SampleCase.COLOR.caseName) {
             it ?: return@retrieve
             @ColorRes val colorId = when (it.variant) {
                 1 -> R.color.magenta

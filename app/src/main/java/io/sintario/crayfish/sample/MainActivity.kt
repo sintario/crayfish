@@ -13,5 +13,6 @@ class MainActivity : AppCompatActivity() {
 
     fun reloadTest() {
         ColorCaseResolver.resolve { textView.setTextColor(resources.getColor(it.resId)) }
+        MessageCaseResolver.resolve { textView.text = "${resources.getString(it.resId)}\n${it.json}" }
     }
 }
