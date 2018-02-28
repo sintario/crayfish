@@ -20,6 +20,8 @@ open class Case(
             null
         }
 
+    override fun toString(): String = "{ name: $name, variant: $variant, metadata: $metadata }"
+
     companion object {
         const val DEFAULT_VARIANT = -1
 
